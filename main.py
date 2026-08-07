@@ -1,7 +1,8 @@
 # Example file showing a circle moving on screen
 import pygame
 
-# pygame setup
+# pygame setupls
+
 pygame.init()
 
 windowWidth = 1280
