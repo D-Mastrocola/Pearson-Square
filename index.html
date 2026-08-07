@@ -2,22 +2,98 @@
   <head>
     <title>Mixing Calculator</title>
     <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body>
-    <header>
-        <h1>Mixing Calculator</h1>
+  <body class="bg-dark text-light">
+    <header class="bg-primary p-2">
+      <h1>Mixing Calculator</h1>
     </header>
-    <form id="batch-form">
-        <label for="targetBF">Target BF%:</label><br>
-        <input type="text" id="target-bf" name="targetBF"/><br>
-        <label for="ingOne">Ingredient 1 BF%:</label><br>
-        <input type="text" id="ing-1" name="ingOne"/><br>
-        <label for="ingTwo">Ingredient 2 BF%:</label><br>
-        <input type="text" id="ing-2" name="ingTwo"/><br>
-        <label for="amount">Batch Amount</label><br>
-        <input type="text" id="amount" name="amount"/><br>
-        <button type="submit">Calculate</button>
-    </form>
+    <div class="d-flex p-3">
+      <div class="m-3">
+        <form id="batch-form">
+          <div class="mb-3">
+            <label for="targetBF" class="form-label">Target BF%:</label>
+            <input
+              type="text"
+              id="target-bf"
+              name="targetBF"
+              class="form-control"
+              value="10.5"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="ingOne" class="form-label">Ingredient 1 BF%:</label>
+            <input
+              type="text"
+              id="ing-1"
+              name="ingOne"
+              class="form-control"
+              value="3.5"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="ingTwo" class="form-label">Ingredient 2 BF%:</label>
+            <input
+              type="text"
+              id="ing-2"
+              name="ingTwo"
+              class="form-control"
+              value="45"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Batch Amount</label>
+            <input
+              type="text"
+              id="amount"
+              name="amount"
+              class="form-control"
+              value="2000"
+            />
+          </div>
+          <!--<button type="submit" class="btn btn-danger">Calculate</button>-->
+        </form>
+      </div>
+      <div class="m-3" id="mix-calc">
+        <h2>Mix</h2>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Ingredient</th>
+              <th scope="col">BF</th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="ingOneRow">
+              <th scope="row">1</th>
+              <td id="ingOneBF"></td>
+              <td id="ingOneAmount"></td>
+            </tr>
+            <tr id="ingTwoRow">
+              <th scope="row">2</th>
+              <td id="ingTwoBF"></td>
+              <td id="ingTwoAmount"></td>
+            </tr>
+            <tr id="calcRow">
+              <th scope="row">Calculations</th>
+              <td id="batchBF"></td>
+              <td id="batchAmount"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </body>
   <script src="./main.js"></script>
 </html>
