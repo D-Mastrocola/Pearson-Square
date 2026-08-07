@@ -1,40 +1,43 @@
-import time
-import math
-print("\nWelcome to the Butter Fat Calculator!\n\n")
-time.sleep(1)
+# Example file showing a circle moving on screen
+import pygame
 
-print("Enter the target butterfat:\n")
-targetBF = float(input())
-print("Enter the first ingredient's butterfat:\n")
-ingOneBF = float(input())
-print("\nEnter the second ingredient's butterfat:\n")
-ingTwoBF = float(input())
-print("Enter the batch amount:")
-batchAmount = float(input())
+# pygame setup
+pygame.init()
+
+windowWidth = 1280
+windowHeight = 720
+
+screen = pygame.display.set_mode((windowWidth, windowHeight))
+clock = pygame.time.Clock()
+running = True
+dt = 0
 
 
-# x + y = 1    x and y are the percentage of both ingredients. They must add up to 1 (aka 100%)
-# Ax + By = C
 
-# x = 1 - y    We can now substitute and solve for y
-# A(1-y) + By = C
-# A - Ay + By = C
-# y(B - A) = C - A Move A to other side and then factor out a y
-# y = (C - A)/(B - A)
+game_font = pygame.font.SysFont("Cambria", 40)
 
-# x = 1 - y     
+while running:
+    # poll for events
+    # pygame.QUIT event means the user clicked X to close your window
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
-#This is our y
-amountTwo = abs((targetBF - ingOneBF)/(ingTwoBF - ingOneBF))  #Make sure its positive
+    # fill the screen with a color to wipe away anything from last frame
+    screen.fill("#333333")
 
-amountOne = 1 - amountTwo #The remainder is the other ingredient
+    text_surface = game_font.render("Mix Calculator", True, (255, 255, 255))
+    screen.blit(text_surface, (10, 10))
 
-amountOne = amountOne*batchAmount #Multiply by the batch amount to get the amount for the batch
-amountTwo = amountTwo*batchAmount #Ditto
+    pygame.draw.rect(screen, "white", pygame.Rect(windowWidth/2 - 50 , windowHeight/2 - 25, 100, 50))
 
-print("Caclulating...")
-time.sleep(1.5)
 
-print("\n==================================\nTarget BF:", targetBF, "%  Amount: ", batchAmount, "\n==================================\n")
-print("\nIngredient 1    BF: ", ingOneBF, "    Amount ", round(amountOne), "\n")
-print("\nIngredient 2    BF: ", ingTwoBF, "    Amount ", round(amountTwo))
+    # flip() the display to put your work on screen
+    pygame.display.flip()
+
+    # limits FPS to 60
+    # dt is delta time in seconds since last frame, used for framerate-
+    # independent physics.
+    dt = clock.tick(60) / 1000
+
+pygame.quit()
