@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS mixes_db;
+
+CREATE DATABASE mixes_db;
